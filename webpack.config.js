@@ -1,15 +1,23 @@
+const path = require('path');
 module.exports = {
     resolve: {
-        extensions: ['.ts', '.js']
+        extensions: ['.ts', '.js'],
     },
-    mode: "development",
+    mode: 'development',
     module: {
         rules: [
             {
-                test: /\.ts$/,
                 exclude: /node_modules/,
-                loader: "ts-loader"
-            }
-        ]
-    }
-}
+                loader: 'ts-loader',
+            },
+        ],
+    },
+    entry: './src/app.js',
+    output: {
+        clean: true,
+        filename: 'app.js',
+        path: path.resolve(__dirname, 'dist'),
+        devtoolModuleFilenameTemplate: '[resource-path]',
+    },
+    target: 'node',
+};
